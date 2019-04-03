@@ -2,8 +2,6 @@
 ### install
 ```bash
 yarn  
-cd backend  
-yarn  
-cd ../frontend  
+cd frontend  
 yarn  
 ```
