@@ -11,6 +11,10 @@
     "sim"
   ],
   "author": "Andrew Ward",
-  "license": "Mozilla Public License 2.0",
-  "git": "https://github.com/andrewward2001/sim-catalog.git"
+  "license": "MPL-2.0",
+  "git": "https://github.com/andrewward2001/sim-catalog.git",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mysql": "^2.16.0"
+  }
 }
