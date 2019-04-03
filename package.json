@@ -1,0 +1,16 @@
+{
+  "name": "sim-catalog",
+  "version": "1.0.0",
+  "description": "A catalog of flight sim addons",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "flight",
+    "sim"
+  ],
+  "author": "Andrew Ward",
+  "license": "Mozilla Public License 2.0",
+  "git": "https://github.com/andrewward2001/sim-catalog.git"
+}
