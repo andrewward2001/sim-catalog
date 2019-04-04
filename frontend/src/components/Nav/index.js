@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { NavLink } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
@@ -15,23 +15,46 @@ class SimCatalogNav extends Component {
     super(props)
 
     this.state = {
-      navOpaque: false
+      navOpaque: false,
+      isHome: false
     }
-
+    
     this.scrollListener = this.scrollListener.bind(this)
   }
   
   componentDidMount() {
     window.addEventListener('scroll', this.scrollListener)
+    
+    if (this.props.location.pathname === '/') {
+      this.setState({
+        isHome: true
+      })
+    } else {
+      this.setState({
+        isHome: false
+      })
+    }
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.scrollListener)
   }
 
+  componentDidUpdate() {
+    if (this.props.location.pathname === '/' && this.state.isHome === false) {
+      this.setState({
+        isHome: true
+      })
+    } else if (this.props.location.pathname !== '/' && this.state.isHome === true) {
+      this.setState({
+        isHome: false
+      })
+    }
+  }
+
   scrollListener() {
     const scrollPos = document.body.scrollTop || document.documentElement.scrollTop
-    if(scrollPos > 30) {
+    if(scrollPos > 30 && this.state.isHome === true) {
       this.setState({
         navOpaque: true
       })
@@ -44,9 +67,9 @@ class SimCatalogNav extends Component {
 
   render() {
     return (
-      <Navbar id="main-nav" collapseOnSelect expand="lg" sticky="top" className={this.state.navOpaque ? 'top' : ''}>
+      <Navbar id="main-nav" collapseOnSelect expand="lg" sticky={this.state.isHome ? 'top' : ''} fixed={this.state.isHome ? '' : 'top'} className={this.state.navOpaque ? 'top' : ''}>
         <Container>
-          <Navbar.Brand href="#">sim-catalog</Navbar.Brand>
+          <Navbar.Brand href="/">sim-catalog</Navbar.Brand>
           <Navbar.Toggle aria-controls="sim-catalog-nav" />
           <Navbar.Collapse id="sim-catalog-nav">
             <Nav className="mr-auto">
@@ -75,4 +98,6 @@ class SimCatalogNav extends Component {
   }
 }
 
-export default SimCatalogNav
+const NavWithRouter = withRouter(props => <SimCatalogNav {...props}></SimCatalogNav>)
+
+export default NavWithRouter
