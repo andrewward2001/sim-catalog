@@ -1,4 +1,5 @@
 const express = require('express')
+const fs = require('fs')
 const mysql = require('mysql')
 
 const PORT = process.env.PORT || 3001
@@ -19,5 +20,5 @@ app.listen(PORT, () => {
 })
 
 app.get('/', (req, res) => {
-  res.send(`sim-catalog running at localhost:${PORT}`)
+  res.sendFile(path.resolve('frontend/public', 'index.html'))
 })

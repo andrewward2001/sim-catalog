@@ -2,6 +2,7 @@
   "name": "sim-catalog",
   "version": "1.0.0",
   "description": "A catalog of flight sim addons",
+  "repository": "andrewward2001/sim-catalog",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -12,7 +13,6 @@
   ],
   "author": "Andrew Ward",
   "license": "MPL-2.0",
-  "git": "https://github.com/andrewward2001/sim-catalog.git",
   "dependencies": {
     "express": "^4.16.4",
     "mysql": "^2.16.0"
